@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!--To ensure proper rendering and touch zooming, include viewport meta tag-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="styles/styleall.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <title>Blog Page</title>
+</head>
+
+<body>
+    <!--Navigational bar using Bootstrap-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html"><img id="logo" src="images/navlogo.png" alt="logo" /> </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!--Navigational bar is responsive. This is for mobile view-->
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="progress.php">Progress <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profile.php">Profile</a>
+                </li>
+                <!--This is the active page (blog.html)-->
+                <li class="nav-item active">
+                    <a class="nav-link" href="blog.html">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="browse.php">Browse</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!--Container for all the articles on the page-->
+    <div class="article-container">
+        <!--Div for a single article-->
+        <div class="article">
+            <div class="left-side">
+                <h3>‘Given up on the dream’: how Australia’s housing market is fuelling renters’ anxiety</h3>
+                <h6><i id="publisher">The Guardian: </i>Michael McGowan</h6>
+                <p class="blogtext">The cost of borrowing has never been lower, but house prices are on the climb again.
+                    At their home in Balmain in Sydney’s inner west, Jamie and Stephanie Dunk have introduced a novel
+                    character into their two sons’ lives: the landlord.
+                </p>
+                <a
+                    href="https://www.theguardian.com/australia-news/2019/oct/05/given-up-on-the-dream-how-australias-housing-market-is-fuelling-renters-anxiety">Continue
+                    Reading</a>
+            </div>
+            <a
+                href="https://www.theguardian.com/australia-news/2019/oct/05/given-up-on-the-dream-how-australias-housing-market-is-fuelling-renters-anxiety">
+                <img class='blogimage' src="images/family.jpg" alt="Family Gathering">
+            </a>
+        </div>
+
+        <!--Div for a single article-->
+        <div class="article">
+            <div class="left-side">
+                <h3>Housing market has turned the corner: CBA's Matt Comyn</h3>
+                <h6><i id="publisher">The Sydney Morning Herald: </i>Clancy Yeates </h6>
+                <p class="blogtext">Commonwealth Bank chief Matt Comyn has described conditions in the housing market as
+                    "encouraging"
+                    with prices in Sydney and Melbourne rising again after 18 months of declines.
+                </p>
+                <a
+                    href="https://www.smh.com.au/business/banking-and-finance/housing-market-has-turned-the-corner-cba-s-matt-comyn-20191016-p5313n.html">Continue
+                    Reading</a>
+            </div>
+            <a
+                href="https://www.smh.com.au/business/banking-and-finance/housing-market-has-turned-the-corner-cba-s-matt-comyn-20191016-p5313n.html">
+                <img class='blogimage' src="images/MattComyn.JPG" alt="Matt Comyn"
+                    href="https://www.smh.com.au/business/banking-and-finance/housing-market-has-turned-the-corner-cba-s-matt-comyn-20191016-p5313n.html">
+            </a>
+        </div>
+
+        <!--Div for a single article-->
+        <div class="article">
+            <div class="left-side">
+                <h3>Urban squeeze pushes great Australian dream to the fringes</h3>
+                <h6><i id="publisher">ABC News: </i>Dea Clark</h6>
+                <p class="blogtext">Sarah and Richard Mattsson were both raised in the country and always wanted a big
+                    backyard,
+                    so when they were looking for a house to buy nine years ago there was no room for compromise.
+                </p>
+                <a href="https://www.abc.net.au/news/2019-10-06/urban-density-south-east-queensland-housing/11559684">Continue
+                    Reading</a>
+            </div>
+            <a href="https://www.abc.net.au/news/2019-10-06/urban-density-south-east-queensland-housing/11559684">
+                <img class='blogimage' src="images/ABCstory.jpg" alt="Small House next to Apartments">
+            </a>
+        </div>
+    </div>
+</body>
+
+<!--Include these links to ensure Bootstrap can function -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+    
+</html>

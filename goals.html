@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <!--To ensure proper rendering and touch zooming, include viewport meta tag-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="styles/styleall.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <title> Saving Progress </title>
+</head>
+
+<body id="goals">
+
+    <!--Navigational bar using Bootstrap-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html"><img id="logo" src="images/navlogo.png" alt="logo" /> </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+    <!--Progress bar for users signing up-->
+    <div class="progress">
+        <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+            aria-valuemax="100">STEP 1</div>
+        <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100"
+            aria-valuemin="0" aria-valuemax="100">STEP 2</div>
+    </div>
+
+    <!--Side bar with image-->
+    <div class="sidebar">
+        <img id="cartoon" src="images/seedart.png" />
+    </div>
+
+    <div class="userdetails">
+        <!--Form for users to set their deposit goals (target, due, frequency)-->
+        <form id="setGoals" action="goals.php" method="POST">
+            <div>
+                <label for="target">Enter your saving target:</label>
+                <!--Required: Users must enter this value-->
+                <p>The saving target is the amount that you wish to save! This is usually equal to the price of the
+                    deposit for your dream house.</p>
+                <input id="target" name="target" class="form-control" type="number" min="1000" step="10"
+                    placeholder="e.g., 40000" required>
+            </div>
+
+            <div>
+                <label for="due">Select the due date:</label>
+                <!--Required: Users must enter this value-->
+                <p>The due date is the time that you intend to have saved your target value.</p>
+                <input id="due" name="due" class="form-control" type="date" min="2019-10-25" required>
+            </div>
+
+            <div>
+                <div id="buttonContainer">
+                    <!--Button to display the depositing options (dependent on the frequency)-->
+                    <button type="button" class="btn btn-dark" id="calculateOps"> Calculate Deposit Options!</button>
+                    <!--Button to reset target and due date-->
+                    <button type="reset" class="btn btn-outline-secondary" id="goBack"> Reset</button>
+                </div>
+            </div>
+
+            <!--Buttons to display the deposit amount per selected time period (daily, weekly, yearly, etc.).
+        These buttons will submit the form (type="submit")
+        -->
+            <div class="buttonOptions">
+                <div>
+                    <button type="submit" id="dayBut" class="btn btn-outline-dark" value="daily" name="freq"> I will
+                        make daily deposits of X</button>
+                </div>
+
+                <div>
+                    <button type="submit" id="weekBut" class="btn btn-outline-dark" value="weekly" name="freq"> I will
+                        make weekly deposits of X</button>
+                </div>
+
+                <div>
+                    <button type="submit" id="FNBut" class="btn btn-outline-dark" value="fortnightly" name="freq"> I
+                        will make fortnightly deposits of X</button>
+                </div>
+
+                <div>
+                    <button type="submit" id="monthBut" class="btn btn-outline-dark" value="monthly" name="freq"> I will
+                        make monthly deposits of X</button>
+                </div>
+
+                <div>
+                    <button type="submit" id="yearBut" class="btn btn-outline-dark" value="yearly" name="freq"> I will
+                        make yearly deposits of X</button>
+                </div>
+            </div>
+    </div>
+    </form>
+
+</body>
+
+<!--Include these links to ensure Bootstrap can function -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+<script>
+
+    $(document).ready(function () {
+        document.getElementById("calculateOps").onclick = function () {
+            if (document.getElementById('target').value == "" || document.getElementById('due').value == "") {
+                // Either target or due date is empty when form was submitted
+                alert("You must enter a target AND due date!")
+            } else {
+                calculateAmounts();
+                displayOptions();
+            }
+        }
+
+        // Called when reset button is clicked, to fade the deposit buttons out
+        document.getElementById("goBack").onclick = function () {
+            removeOptions();
+        }
+
+        // Fades the deposit buttons out
+        function removeOptions() {
+            $("#dayBut").fadeOut("slow");
+            $("#weekBut").fadeOut("slow");
+            $("#FNBut").fadeOut("slow");
+            $("#monthBut").fadeOut("slow");
+            $("#yearBut").fadeOut("slow");
+        }
+
+
+        // Fades the deposit buttons in. Called when user presses button with id="calculateOps"
+        function displayOptions() {
+            $("#dayBut").fadeIn("slow");
+            $("#weekBut").fadeIn("slow");
+            $("#FNBut").fadeIn("slow");
+            $("#monthBut").fadeIn("slow");
+            $("#yearBut").fadeIn("slow");
+        }
+
+        // Converts deposit amount according to frequency 
+        function convertDeposit(target, frequency) {
+            return target / frequency;
+        }
+
+        // Calclulates the time difference according to conversion
+        function calcTimeDiff(timeMS, conversion) {
+            return Math.ceil(timeMS / conversion);
+        }
+
+        // Calculates the deposit amount according to deposit frequencty
+        function calculateAmounts() {
+            // Retrive elements from form
+            const target = document.getElementById('target').value;
+            const due = document.getElementById('due').value;
+            const dueDate = new Date(due);
+            // Calculate the date today
+            const today = new Date();
+
+            // Time difference in milliseconds 
+            const timeMS = Math.abs(dueDate.getTime() - today.getTime());
+
+            // Time difference according to frequency. ASSUMPTION: THERE ARE 30 DAYS IN A MONTH
+            const noDays = calcTimeDiff(timeMS, (1000 * 60 * 60 * 24));
+            const noWeeks = calcTimeDiff(timeMS, (1000 * 60 * 60 * 24 * 7));
+            const noFN = calcTimeDiff(timeMS, (1000 * 60 * 60 * 24 * 7 * 2));
+            const noMonths = calcTimeDiff(timeMS, (1000 * 60 * 60 * 24 * 30));
+            const noYears = calcTimeDiff(timeMS, (1000 * 60 * 60 * 24 * 365));
+
+            // Calculating the deposit amounts for each frequency 
+            const dayDep = convertDeposit(target, noDays);
+            const weekDep = convertDeposit(target, noWeeks);
+            const FNDep = convertDeposit(target, noFN);
+            const monthDep = convertDeposit(target, noMonths);
+            const yearDep = convertDeposit(target, noYears);
+
+            // Display the deposit amount on each button
+            $("#dayBut").text("I want to deposit " + Math.ceil(dayDep) + " daily");
+            $("#weekBut").text("I want to deposit " + Math.ceil(weekDep) + " weekly");
+            $("#FNBut").text("I want to deposit " + Math.ceil(FNDep) + " fourtnightly");
+            $("#monthBut").text("I want to deposit " + Math.ceil(monthDep) + " monthly");
+            $("#yearBut").text("I want to deposit " + Math.ceil(yearDep) + " yearly");
+        }
+    });
+</script>
+
+</html>

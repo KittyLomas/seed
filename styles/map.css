@@ -1,0 +1,59 @@
+#browseContent {
+	height: 75%;
+	background-color: #030035;
+}
+
+#sliderContent {
+	padding-left: 5%;
+	padding-right: 5%;
+	background-color: #030035;
+	color: white;
+	font-size: 20px;
+}
+
+#sliderContent button {
+	background-color: rgb(32, 19, 60);
+	color: white;
+	border: 0;
+	font-family: verdana;
+}
+
+#sliderContent button:hover {
+	background-color: rgb(32, 19, 60);
+	color: rgb(97, 171, 103);
+	border: 0;
+}
+
+#sliderContent input {
+	background-color: #030035;
+	color: rgb(97, 171, 103);
+	border: 0;
+	font-weight: bold;
+}
+
+#map {
+	height: 100%;
+	width: 100%; 
+  }
+
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#firstHeading {
+	font-size: 20px;
+}
+
+#property img {
+	width: 400px;
+}
+
+#bodyContent {
+	font-size: 20px;
+}
+
+#slider-range .ui-slider-handle {
+	background-color: rgb(97, 171, 103);
+}
